@@ -25,6 +25,8 @@ position = Vector2(1740, 183)
 
 [node name="Player" parent="Characters" instance=ExtResource("1_e8kjl")]
 position = Vector2(411, 113)
+jumpHeight = -39.93
+gravity = 200.0
 
 [node name="Enemy" parent="Characters" instance=ExtResource("5_bwrxf")]
 position = Vector2(1357, 213)

@@ -24,10 +24,8 @@ public partial class Player : CharacterBody2D
     private void GetInput()
 	{
 		velocity.X = Input.GetVector("left","right","jump","ui_down").X * speed;
-		
-		
-		if(Input.IsActionPressed("jump") && floorD.IsColliding())
-			velocity.Y -= jumpHeight;
+		if(floorD.IsColliding())
+			velocity.Y =+ Input.GetActionStrength("jump")*jumpHeight; 
 	}
 
     //Runs when scene is started
