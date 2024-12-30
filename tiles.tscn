@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjsgjndt5j3bk"]
+
+[ext_resource type="Texture2D" uid="uid://b48ahbmu5cvwn" path="res://Sprite/brick.png" id="1_u1nox"]
+[ext_resource type="Texture2D" uid="uid://b7s3aguvwguau" path="res://Sprite/tilemap.png" id="2_hm3ni"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1k3kd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e8qf"]
+resource_name = "Green Brick"
+texture = ExtResource("1_u1nox")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_orfrx"]
+texture = ExtResource("2_hm3ni")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, 4.625, -8, 4.375, -3.875, -4.5, -3.875, -4.375, -8, -8, -8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4m37l"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_1k3kd")
+sources/0 = SubResource("TileSetAtlasSource_0e8qf")
+sources/1 = SubResource("TileSetAtlasSource_orfrx")
+
+[node name="Tiles" type="TileMapLayer"]
+texture_filter = 1
+position = Vector2(411, 244)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_4m37l")

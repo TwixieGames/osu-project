@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://5vpatmi3bdkm"]
+
+[ext_resource type="Texture2D" uid="uid://dti8ib7dgtvvf" path="res://Sprite/charactermap.png" id="1_sofdv"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy.cs" id="1_v8ll4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_38lt1"]
+font_size = 17
+font_color = Color(0.985714, 1, 0.925884, 1)
+outline_size = 4
+outline_color = Color(0.690597, 0.246711, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4y34"]
+size = Vector2(14, 15.4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy7y4"]
+atlas = ExtResource("1_sofdv")
+region = Rect2(32.6469, -0.195747, 15.0632, 18.9928)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3o6r"]
+size = Vector2(74.2, 16.4)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_v8ll4")
+
+[node name="Message" type="Label" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+offset_left = -34.0
+offset_top = -70.0
+offset_right = 35.0
+offset_bottom = -46.0
+text = "Get Out!"
+label_settings = SubResource("LabelSettings_38lt1")
+
+[node name="Text Time" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_t4y34")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_gy7y4")
+offset = Vector2(0, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0999969, -0.5)
+shape = SubResource("RectangleShape2D_t3o6r")
+
+[connection signal="body_entered" from="Area2D" to="." method="BodyEnter"]
+[connection signal="body_exited" from="Area2D" to="." method="BodyExit"]

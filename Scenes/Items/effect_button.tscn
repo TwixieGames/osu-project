@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbc865uldd3uv"]
+
+[ext_resource type="Texture2D" uid="uid://b7s3aguvwguau" path="res://Sprite/tilemap.png" id="1_a280h"]
+[ext_resource type="Script" path="res://Scenes/Items/EffectButton.cs" id="1_khmee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjaoq"]
+atlas = ExtResource("1_a280h")
+region = Rect2(92, 0, 24, 17.825)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_383qb"]
+size = Vector2(20, 7)
+
+[node name="Effect Button" type="Area2D"]
+script = ExtResource("1_khmee")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_sjaoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_383qb")
+
+[connection signal="body_entered" from="." to="." method="BodyEnter"]

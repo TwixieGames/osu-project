@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://clonpttdcacjq"]
+
+[ext_resource type="Texture2D" uid="uid://dffdsr246he77" path="res://Sprite/player.png" id="1_hwclq"]
+[ext_resource type="Script" path="res://Player.cs" id="1_t7b2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vyun"]
+size = Vector2(10, 15)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0qy6"]
+font_size = 12
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_t7b2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4vyun")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_hwclq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+drag_horizontal_enabled = true
+drag_left_margin = 0.5
+
+[node name="FloorDetect" type="RayCast2D" parent="."]
+position = Vector2(0, 7.2)
+target_position = Vector2(0, 1.2)
+hit_from_inside = true
+
+[node name="Health" type="Label" parent="."]
+layout_direction = 1
+offset_left = -110.0
+offset_top = -61.0
+offset_right = -68.0
+offset_bottom = -38.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+localize_numeral_system = false
+label_settings = SubResource("LabelSettings_v0qy6")
+metadata/_edit_use_anchors_ = true

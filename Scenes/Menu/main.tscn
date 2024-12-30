@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnjkwvyi37vh3"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/PlayButton.cs" id="1_l4obu"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+y_sort_enabled = true
+offset_left = -912.0
+offset_top = -432.0
+offset_right = 1008.0
+offset_bottom = 656.0
+
+[node name="Play Button" type="Button" parent="."]
+y_sort_enabled = true
+offset_right = 128.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+script = ExtResource("1_l4obu")
+
+[node name="Camera2D" type="Camera2D" parent="Play Button"]
+position = Vector2(64, 0)
+
+[connection signal="pressed" from="Play Button" to="Play Button" method="onPressed"]

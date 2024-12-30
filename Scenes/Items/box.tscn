@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgpngmdgy1040"]
+
+[ext_resource type="Texture2D" uid="uid://dq6mf0lx6l01s" path="res://icon.svg" id="1_ovcl2"]
+[ext_resource type="Script" path="res://Scenes/Items/Box.cs" id="1_xm6gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no2j5"]
+size = Vector2(24.4, 23.6)
+
+[node name="Box" type="RigidBody2D"]
+position = Vector2(736, 177)
+script = ExtResource("1_xm6gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11.8, 10.6)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_no2j5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-11.4, 11.1)
+texture = ExtResource("1_ovcl2")
+
+[connection signal="mouse_entered" from="." to="." method="MouseTouch"]
