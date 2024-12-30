@@ -23,17 +23,10 @@ public partial class Player : CharacterBody2D
 	//Collects input for character movement
     private void GetInput()
 	{
-		floorD = GetNode<RayCast2D>("FloorDetect");
-		velocity.X = 0;
-		var right = Input.IsActionPressed("right");
-		var left = Input.IsActionPressed("left");
-		var jump = Input.IsActionPressed("jump");
-
-		if(right)
-			velocity.X += speed;
-		if(left)
-			velocity.X -= speed;
-		if(jump && floorD.IsColliding())
+		velocity.X = Input.GetVector("left","right","jump","ui_down").X * speed;
+		
+		
+		if(Input.IsActionPressed("jump") && floorD.IsColliding())
 			velocity.Y -= jumpHeight;
 	}
 
@@ -41,12 +34,13 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         AddToGroup("Player");
+		floorD = GetNode<RayCast2D>("FloorDetect");
+		hp = GetNode<Label>("Health");
     }
 
     //Gets called every frame
     public override void _Process(double delta)
 	{
-		hp = GetNode<Label>("Health");
 		hp.Text = "HP:" + health;
 		velocity.Y += gravity *(float)delta;
 		GetInput();
